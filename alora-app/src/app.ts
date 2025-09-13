@@ -1,5 +1,5 @@
 import express from 'express';
-import router from './routes/index.js';
+import { setRoutes } from './routes/index';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Set up routes
-app.use('/api', router);
+setRoutes(app);
 
 // Start the server
 app.listen(PORT, () => {
