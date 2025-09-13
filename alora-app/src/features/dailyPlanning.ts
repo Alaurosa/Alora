@@ -2,24 +2,14 @@ class DailyPlanning {
     phase: string;
     recommendations: string[];
 
-    constructor() {
-        this.phase = '';
+    constructor(phase: string) {
+        this.phase = phase;
         this.recommendations = [];
     }
 
-    generatePlan(phase: string): any {
+    generatePlan(): string {
         // Logic to generate a daily plan based on the user's cycle phase
-        this.phase = phase || 'follicular';
-        
-        return {
-            phase: this.phase,
-            plan: `Daily plan for phase: ${this.phase}`,
-            recommendations: [
-                `Nutrition recommendation for ${this.phase} phase`,
-                `Exercise recommendation for ${this.phase} phase`,
-                `Wellness recommendation for ${this.phase} phase`
-            ]
-        };
+        return `Daily plan for phase: ${this.phase}`;
     }
 
     updateRecommendations(newRecommendations: string[]): void {

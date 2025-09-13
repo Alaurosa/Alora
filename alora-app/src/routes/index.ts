@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import DailyPlanning from '../features/dailyPlanning.js';
-import AIPersonalization from '../features/aiPersonalization.js';
-import FastInterface from '../features/fastInterface.js';
+import DailyPlanning from '../features/dailyPlanning';
+import AIPersonalization from '../features/aiPersonalization';
+import FastInterface from '../features/fastInterface';
 
 const router = Router();
 
