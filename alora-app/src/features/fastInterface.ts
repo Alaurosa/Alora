@@ -1,4 +1,4 @@
-export class FastInterface {
+class FastInterface {
     private cyclePhase: string;
     private mood: string;
 
@@ -17,10 +17,28 @@ export class FastInterface {
         console.log(`Mood selected: ${this.mood}`);
     }
 
-    renderDashboard(recommendations: string[]): void {
-        console.log("Rendering dashboard with recommendations:");
-        recommendations.forEach(rec => {
-            console.log(`- ${rec}`);
-        });
+    renderDashboard(): any {
+        // Mock dashboard data
+        return {
+            currentPhase: 'follicular',
+            dayOfCycle: 8,
+            cycleLength: 28,
+            recommendations: [
+                {
+                    id: 1,
+                    title: 'Nutrition Tip',
+                    content: 'Focus on iron-rich foods during your menstrual phase.',
+                    phaseRelevance: ['menstrual']
+                },
+                {
+                    id: 2,
+                    title: 'Exercise Recommendation',
+                    content: 'High-intensity workouts are most effective during your follicular phase.',
+                    phaseRelevance: ['follicular']
+                }
+            ]
+        };
     }
 }
+
+export default FastInterface;

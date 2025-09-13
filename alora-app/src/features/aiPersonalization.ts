@@ -1,7 +1,4 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
-const TESTSPRITE_API_KEY = process.env.TESTSPRITE_API_KEY;
+// No need for dotenv in this simplified version
 
 class AIPersonalization {
     mood: string;
@@ -14,42 +11,39 @@ class AIPersonalization {
         this.symptoms = [];
     }
 
-    async adjustPlan(userInput: { mood: string; energyLevel: number; symptoms: string[] }) {
-        this.mood = userInput.mood;
-        this.energyLevel = userInput.energyLevel;
-        this.symptoms = userInput.symptoms;
-        // Logic to adjust the daily plan based on user input
-
-        // Send to TestSprite for real-time testing/debugging
-        await sendTestToTestSprite({
-            type: 'adjustPlan',
-            data: userInput,
-        });
+    acceptWearableData(data: any): void {
+        // Store wearable data for personalization
+        if (data.mood) this.mood = data.mood;
+        if (data.energyLevel) this.energyLevel = data.energyLevel;
+        if (data.symptoms) this.symptoms = data.symptoms;
+        
+        console.log('Wearable data accepted:', data);
     }
 
-    async acceptWearableData(data: { heartRate: number; sleepQuality: number }) {
-        // Logic to process wearable data and adjust personalization
-
-        // Send to TestSprite for real-time testing/debugging
-        await sendTestToTestSprite({
-            type: 'wearableData',
-            data,
-        });
+    adjustPlan(): any {
+        // Generate personalized recommendations based on user data
+        return {
+            personalized: true,
+            mood: this.mood,
+            energyLevel: this.energyLevel,
+            recommendations: [
+                {
+                    type: 'nutrition',
+                    content: `Based on your ${this.mood} mood and energy level ${this.energyLevel}, we recommend focusing on ${this.energyLevel < 3 ? 'energy-boosting foods' : 'balanced nutrition'}.`
+                },
+                {
+                    type: 'exercise',
+                    content: `Consider ${this.energyLevel < 3 ? 'gentle movement like yoga or walking' : 'moderate exercise like strength training or cardio'} today.`
+                },
+                {
+                    type: 'wellness',
+                    content: `For your mood, we suggest ${this.mood === 'stressed' ? 'meditation and deep breathing' : 'journaling or social connection'}.`
+                }
+            ]
+        };
     }
 }
 
-async function sendTestToTestSprite(testData: object) {
-    // Example: send testData to TestSprite API for validation/debugging
-    // Replace with actual TestSprite SDK/API usage
-    const response = await fetch('https://api.testsprite.com/v1/test', {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${TESTSPRITE_API_KEY}`,
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(testData),
-    });
-    return response.json();
-}
+
 
 export default AIPersonalization;
