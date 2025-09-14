@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Alora Brand Colors - Pink Palette */
+  --alora-pink-50: #fdf2f8;
+  --alora-pink-100: #fce7f3;
+  --alora-pink-200: #fbcfe8;
+  --alora-pink-300: #f9a8d4;
+  --alora-pink-400: #f472b6;
+  --alora-pink-500: #ec4899;
+  --alora-pink-600: #db2777;
+  --alora-pink-700: #be185d;
+  --alora-pink-800: #9d174d;
+  --alora-pink-900: #831843;
+  
+  /* Alora Brand Colors - Purple Palette */
+  --alora-purple-50: #faf5ff;
+  --alora-purple-100: #f3e8ff;
+  --alora-purple-200: #e9d5ff;
+  --alora-purple-300: #d8b4fe;
+  --alora-purple-400: #c084fc;
+  --alora-purple-500: #a855f7;
+  --alora-purple-600: #9333ea;
+  --alora-purple-700: #7c3aed;
+  --alora-purple-800: #6b21a8;
+  --alora-purple-900: #581c87;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Alora Custom Colors */
+  --color-alora-pink-50: var(--alora-pink-50);
+  --color-alora-pink-100: var(--alora-pink-100);
+  --color-alora-pink-200: var(--alora-pink-200);
+  --color-alora-pink-300: var(--alora-pink-300);
+  --color-alora-pink-400: var(--alora-pink-400);
+  --color-alora-pink-500: var(--alora-pink-500);
+  --color-alora-pink-600: var(--alora-pink-600);
+  --color-alora-pink-700: var(--alora-pink-700);
+  --color-alora-pink-800: var(--alora-pink-800);
+  --color-alora-pink-900: var(--alora-pink-900);
+  
+  --color-alora-purple-50: var(--alora-purple-50);
+  --color-alora-purple-100: var(--alora-purple-100);
+  --color-alora-purple-200: var(--alora-purple-200);
+  --color-alora-purple-300: var(--alora-purple-300);
+  --color-alora-purple-400: var(--alora-purple-400);
+  --color-alora-purple-500: var(--alora-purple-500);
+  --color-alora-purple-600: var(--alora-purple-600);
+  --color-alora-purple-700: var(--alora-purple-700);
+  --color-alora-purple-800: var(--alora-purple-800);
+  --color-alora-purple-900: var(--alora-purple-900);
+  
+  /* Custom Border Radius */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Custom gradient utilities */
+.gradient-alora {
+  background: linear-gradient(135deg, var(--alora-pink-400) 0%, var(--alora-purple-500) 100%);
+}
+
+.gradient-alora-soft {
+  background: linear-gradient(135deg, var(--alora-pink-100) 0%, var(--alora-purple-100) 100%);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply px-6 py-3 rounded-2xl font-medium text-white transition-all duration-300 ease-in-out;
+  background: linear-gradient(135deg, var(--alora-pink-500), var(--alora-purple-500));
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Card styles */
+.card-alora {
+  @apply bg-white rounded-3xl p-6 transition-all duration-300 ease-in-out;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card-alora:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
